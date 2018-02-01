@@ -1,0 +1,30 @@
+{
+  "name": "netusers",
+  "version": "1.0.0",
+  "description": "Vue.js app",
+  "scripts": {
+    "dev": "cross-env ASPNETCORE_ENVIRONMENT=Development NODE_ENV=development dotnet run",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Miron Jakubowski",
+  "license": "MIT",
+  "dependencies": {
+    "vee-validate": "^2.0.3",
+    "vue": "^2.5.13",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "aspnet-webpack": "^2.0.3",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-stage-2": "^6.24.1",
+    "cross-env": "^5.1.3",
+    "css-loader": "^0.28.9",
+    "eslint": "^4.16.0",
+    "vue-loader": "^14.0.3",
+    "vue-template-compiler": "^2.5.13",
+    "webpack": "^3.10.0",
+    "webpack-hot-middleware": "^2.21.0"
+  }
+}
