@@ -9,7 +9,8 @@ module.exports = (env) => {
     resolve: {
       extensions: ['.js', '.vue'],
       alias: {
-        'vue$': 'vue/dist/vue'
+        'vue$': 'vue/dist/vue',
+        '@': path.join(__dirname,'ClientApp')
       }
     },
     output: {

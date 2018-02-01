@@ -1,12 +1,18 @@
 <template>
   <div id="app">
-    <h1>Hello from Vue.js</h1>
+    <NavBar />
+    <div class="container">
+      <router-view />
+    </div>
   </div>
 </template>
 
 <script>
+import NavBar from './components/NavBar'
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: { NavBar },
 }
 </script>
 
