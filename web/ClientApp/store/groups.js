@@ -1,4 +1,4 @@
-import api from '../tools/api'
+import api from '@/tools/Api'
 import { ADD_GROUP, GET_GROUPS, DELETE_GROUP, DELETE_GROUP_REQUEST } from './mutation-types'
 import { mapGroups, mapGroup } from './mappers'
 
