@@ -8,33 +8,33 @@ function randomTimeout() {
 class Api {
 
   getUsers() {
-    return new Promise((resolve) => {
-      setTimeout(() => resolve(JSON.parse(localStorage.getItem("users") || "[]")), randomTimeout());
-    });
+    return fetch("/api/users")
+      .then(response => response.json())
+      .catch(err => console.error(err));
   }
 
   saveUser(user) {
-    return new Promise((resolve) => {
-      let users = JSON.parse(localStorage.getItem("users") || "[]");
-      users.push(user);
-      localStorage.setItem("users", JSON.stringify(users));
+    const params = {
+      method: "PUT",
+      body: JSON.stringify(user),
+      headers: new Headers({
+        "Content-Type": "application/json"
+      })
+    };
 
-      setTimeout(() => resolve(user), randomTimeout());
-    });
+    return fetch("/api/users", params)
+      .then(response => response.json())
+      .catch(err => console.error(err));
   }
 
   deleteUser(id) {
-    return new Promise(resolve => {
-      let users = JSON.parse(localStorage.getItem("users"));
-      const index = users.findIndex(usr => usr.id === id);
-      if (index === -1) {
-        resolve(false);
-      } else {
-        users.splice(index, 1);
-        localStorage.setItem("users", JSON.stringify(users));
-        resolve(true);
-      }
-    });
+    const params = {
+      method: "DELETE"
+    };
+
+    return fetch(`/api/users/${id}`, params)
+      .then(() => true)
+      .catch(() => false);
   }
 
   addGroup(group) {
