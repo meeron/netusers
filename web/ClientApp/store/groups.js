@@ -14,7 +14,8 @@ const actions = {
   },
   
   getGroups({ commit }) {
-    api.getGroups().then(groups => commit(GET_GROUPS, mapGroups(groups)));
+    api.getGroups()
+    .then(groups => commit(GET_GROUPS, mapGroups(groups)));
   },
 
   remove({ commit, state }, id) {
