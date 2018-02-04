@@ -1,3 +1,5 @@
+import client from './http-client'
+
 function randomTimeout() {
   const min = 1500;
   const max = 3000;
@@ -8,33 +10,15 @@ function randomTimeout() {
 class Api {
 
   getUsers() {
-    return fetch("/api/users")
-      .then(response => response.json())
-      .catch(err => console.error(err));
+    return client.get('users');
   }
 
   saveUser(user) {
-    const params = {
-      method: "PUT",
-      body: JSON.stringify(user),
-      headers: new Headers({
-        "Content-Type": "application/json"
-      })
-    };
-
-    return fetch("/api/users", params)
-      .then(response => response.json())
-      .catch(err => console.error(err));
+    return client.put('users', user);
   }
 
   deleteUser(id) {
-    const params = {
-      method: "DELETE"
-    };
-
-    return fetch(`/api/users/${id}`, params)
-      .then(() => true)
-      .catch(() => false);
+    return client.delete(`users/${id}`);
   }
 
   addGroup(group) {
