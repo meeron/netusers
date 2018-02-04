@@ -1,12 +1,5 @@
 import client from './http-client'
 
-function randomTimeout() {
-  const min = 1500;
-  const max = 3000;
-
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 class Api {
 
   getUsers() {
@@ -21,36 +14,16 @@ class Api {
     return client.delete(`users/${id}`);
   }
 
-  addGroup(group) {
-    return new Promise(resolve => {
-      const groups = JSON.parse(localStorage.getItem("groups") || "[]");
-      groups.push(group);
-      localStorage.setItem("groups", JSON.stringify(groups));
-
-      resolve(group);
-    });
+  getGroups() {
+    return client.get('groups');
   }
 
-  getGroups() {
-    return new Promise(resolve => {
-      setTimeout(() => resolve(JSON.parse(localStorage.getItem("groups") || "[]")), randomTimeout());
-    });
+  addGroup(group) {
+    return client.put('groups', group);
   }
 
   deleteGroup(id) {
-    return new Promise(resolve => {
-      let groups = JSON.parse(localStorage.getItem("groups"));
-      const index = groups.findIndex(grp => grp.id === id);
-      if (index === -1) {
-        resolve(false);
-      } else {
-        setTimeout(() => {
-          groups.splice(index, 1);
-          localStorage.setItem("groups", JSON.stringify(groups));
-          resolve(true);
-        }, randomTimeout());
-      }
-    });
+    return client.delete(`groups/${id}`);
   }
 }
 
