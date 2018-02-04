@@ -1,4 +1,4 @@
-import api from '@/tools/Api'
+import api from '@/tools/api'
 import { GET_USERS, SAVE_USER, DELETE_USER } from './mutation-types'
 
 const state = {
