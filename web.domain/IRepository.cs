@@ -5,7 +5,7 @@ namespace web.domain
     {
          TDocument Get(TId id);
 
-         TDocument Insert(TDocument document);
+         void Insert(TDocument document);
 
          void Delete(TId id);
     }
