@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\web.business\web.business.csproj" />
+    <ProjectReference Include="..\web.core\web.core.csproj" />
   </ItemGroup>
 
 </Project>
