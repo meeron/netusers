@@ -288,3 +288,5 @@ __pycache__/
 *.xsd.cs
 
 web/wwwroot/dist/
+
+/web/appsettings.Development.json

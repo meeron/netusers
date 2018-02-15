@@ -1,4 +1,5 @@
 using MongoDB.Driver;
+using web.core.Configuration;
 
 namespace web.domain.Collections
 {
@@ -8,9 +9,9 @@ namespace web.domain.Collections
 
         private readonly IMongoDatabase _database;
 
-        public CollectionFactory(string connectionString)
+        public CollectionFactory(IConnectionStrings connectionStrings)
         {
-            var mongoUrl = new MongoUrl(connectionString);
+            var mongoUrl = new MongoUrl(connectionStrings.MongoDb);
 
             _client = new MongoClient(mongoUrl);
             _database = _client.GetDatabase(mongoUrl.DatabaseName);           
