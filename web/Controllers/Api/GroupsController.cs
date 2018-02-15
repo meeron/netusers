@@ -2,43 +2,29 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using web.domain.Models;
+using web.business.Dto;
 
 namespace web.Controllers.Api
 {
     [Route("api/groups")]
     public class GroupsController : Controller
     {
-        private static readonly List<Group> _groups = new List<Group>();
-
         [HttpGet("")]
-        public IEnumerable<Group> Get()
+        public IEnumerable<GroupDto> Get()
         {
-            return _groups;
+            return Enumerable.Empty<GroupDto>();
         }
 
         [HttpPut("")]
-        public IActionResult Save([FromBody] Group newGroup)
+        public IActionResult Save([FromBody] GroupDto newGroup)
         {
-            if (string.IsNullOrWhiteSpace(newGroup?.Name))
-                return BadRequest();
-
-            newGroup.Id = Guid.NewGuid().ToString();
-            _groups.Add(newGroup);
-
-            return StatusCode(201, newGroup);
+            return BadRequest();
         }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(string id)
         {
-            var group = _groups.SingleOrDefault(g => g.Id == id);
-            if (group == null)
-                return NotFound();
-
-            _groups.Remove(group);
-
-            return Ok();
+            return BadRequest();
         }
     }
 }
