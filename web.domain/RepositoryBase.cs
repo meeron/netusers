@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using MongoDB.Driver;
 using web.domain.Collections;
 
@@ -16,6 +17,11 @@ namespace web.domain
         public virtual void Delete(TId id)
         {
             _collection.DeleteOne(d => d.Id.Equals(id));
+        }
+
+        public IEnumerable<TDocument> Find()
+        {
+            return _collection.Find(FilterDefinition<TDocument>.Empty).ToEnumerable();
         }
 
         public virtual TDocument Get(TId id)
